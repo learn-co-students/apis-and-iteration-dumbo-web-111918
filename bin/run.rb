@@ -4,5 +4,6 @@ require_relative "../lib/api_communicator.rb"
 require_relative "../lib/command_line_interface.rb"
 
 welcome
+type = get_type
 character = get_character_from_user
-show_character_movies(character)
+show_character_movies(character, type)
