@@ -2,16 +2,26 @@ require 'rest-client'
 require 'json'
 require 'pry'
 
+def next_page
+  url = "http://www.swapi.co/api/people/"
+  new_list = []
+  response_hash = JSON.parse(RestClient.get(url))
+  while !!response_hash["next"]
+    new_list << response_hash["results"]
+    response_hash = JSON.parse(RestClient.get(response_hash["next"]))
+  end
+  new_list << response_hash["results"]
+  new_list.flatten
+  new_list = new_list.flatten
+end
+
 def get_character_movies_from_api(character_name)
-  response_string = RestClient.get('http://www.swapi.co/api/people/')
-  response_hash = JSON.parse(response_string)
-  character_info = response_hash["results"].find do |character|
+  character_info = next_page.find do |character|
     character["name"] == character_name
-    end
+  end
   movie_list = character_info["films"]
   movie_list.map do |url|
-    url_response = RestClient.get(url)
-    url_hash = JSON.parse(url_response)
+    JSON.parse(RestClient.get(url))
   end
 end
 
