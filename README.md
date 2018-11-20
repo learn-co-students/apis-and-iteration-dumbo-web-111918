@@ -1,6 +1,6 @@
 # Working with APIs and Nested Data Structures
 
-## Objectives
+## Objective
 
 1. Use Ruby to programmatically make a web request to the [Star Wars API](https://swapi.co/).
 2. Use iteration and other techniques to parse a nested hash for specific information.
