@@ -8,4 +8,4 @@ def get_character_from_user
 end
 
 
-get_character_from_user
+# get_character_from_user
