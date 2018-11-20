@@ -28,13 +28,16 @@ end
 
 def get_character_movies_from_api(character_name)
   character_list_array = character_list
-  character_list_array.find do |list|
+  exit = ""
+  character_list_array.each do |list|
     if list["name"].include?(character_name)
+      exit = nil
       return (list["films"]).push(list["name"])
-    else
-      puts "That's not a character in Star Wars.."
-      return nil
     end
+  end
+  if exit
+    puts "That's not a character in Star Wars.."
+    return nil
   end
 end
   # iterate over the response hash to find the collection of `films` for the given
