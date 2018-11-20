@@ -33,6 +33,9 @@ def print_movies(films)
     puts "#{i+1} #{film['title']}"
   end
   # some iteration magic and puts out the movies in a nice list
+  films.each_with_index do |film, i|
+    puts "#{i + 1} #{film["title"]}"
+  end
 end
 
 def show_character_movies(character)
