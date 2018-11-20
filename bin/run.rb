@@ -4,5 +4,9 @@ require_relative "../lib/api_communicator.rb"
 require_relative "../lib/command_line_interface.rb"
 
 welcome
-character = get_character_from_user
-show_character_movies(character)
+user_input = get_user_input
+if user_input[0] == "character"
+  show_character_movies(user_input[1])
+elsif user_input[0] == "film"
+  get_films_from_api(user_input[1])
+end
